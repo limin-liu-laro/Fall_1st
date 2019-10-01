@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="welcome_message">输入你的邮箱地址：</string>
+    <string name="Button1">在此输入邮箱地址</string>
+    <string name="Button2">输入你的密码:</string>
+    <string name="Button3"></string>
+    <string name="Button4">登录</string>
+    <string name="Hint">邮箱地址</string>
+    <string name="Yourprofile">你的个人信息</string>
+    <string name="Yourname">名字</string>
+    <string name="Enteryourname">在此输入你的名字</string>
+    <string name="Youremail">你的邮箱</string>
+    <string name="Enteryouremail">邮箱地址</string>
+    <string name="Yourpicture">头像</string>
+    <string name="picture"></string>
+    <string name="Click">点击拍照</string>
+    <string name="Chat">聊天</string>
+    <string name="Send">发送</string>
+    <string name="Recieve">接收</string>
+    <string name="MessageHint">输入信息</string>
+
+
+    <!--    <string name="Button4">Switch on/off</string>
+        <string name="Button5">Type HERE</string>
+        <string name="Hint">Author Name</string>-->
+</resources>

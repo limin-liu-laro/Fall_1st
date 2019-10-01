@@ -1,10 +1,24 @@
 <resources>
-    <string name="app_name">Lab2</string>
-    <string name="welcome_message">Look at my GUI</string>
-    <string name="Button1">CLICK HERE </string>
-    <string name="Button2">Check this out!</string>
+    <string name="app_name">Lab4</string>
+    <string name="welcome_message">Enter your email address</string>
+    <string name="Button1">Type email here </string>
+    <string name="Button2">Type your password:</string>
     <string name="Button3"></string>
-    <string name="Button4">Switch on/off</string>
+    <string name="Button4">LOGIN</string>
+    <string name="Hint">Email Address</string>
+    <string name="Yourprofile">Your profile</string>
+    <string name="Yourname">Your name</string>
+    <string name="Enteryourname">Enter your name</string>
+    <string name="Youremail">Your email</string>
+    <string name="Enteryouremail">Enter your email</string>
+    <string name="Yourpicture">Your picture</string>
+    <string name="picture"></string>
+    <string name="Click">Click the botton above to take a picture</string>
+    <string name="Chat">Go to chat</string>
+    <string name="Send">SEND</string>
+    <string name="Recieve">RECIEVE</string>
+    <string name="MessageHint">Type here</string>
+<!--    <string name="Button4">Switch on/off</string>
     <string name="Button5">Type HERE</string>
-    <string name="Hint">Author Name</string>
+    <string name="Hint">Author Name</string>-->
 </resources>
