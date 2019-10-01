@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         String previous = prefs.getString("ReserveName", "Default Value"); // get Key: getString from ReserveName
 
         EditText emailText = findViewById(R.id.email); // bound email id
-/*        Log.d(ACTIVITY_NAME,emailText.toString());*/
+       Log.d(ACTIVITY_NAME,emailText.toString());
         Log.d(ACTIVITY_NAME,emailText.getText().toString());
         this.email = emailText.getText().toString();
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         emailText.setText(previous);
         loginButton.setOnClickListener(clk -> {
-/*            Log.d(ACTIVITY_NAME,emailText.toString());*/
+            Log.d(ACTIVITY_NAME,emailText.toString());
             Log.d(ACTIVITY_NAME,emailText.getText().toString());
             this.email = emailText.getText().toString();
             Intent goToPage2 = new Intent(MainActivity.this, ProfileActivity.class);
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     });
     }
-/*    @Override
+    @Override
     protected void onStart() {
         super.onStart();
         Log.e(ACTIVITY_NAME,"onStart");
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.e(ACTIVITY_NAME,"onDestroy");
-    }*/
+    }
 
 /*    @Override
    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
