@@ -1,4 +1,4 @@
-/*package com.example.fall_1st;
+package com.example.fall_1st;
 
 
 
@@ -7,23 +7,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
         public class ChatRoomActivity extends AppCompatActivity {
             //items to display
-            ArrayList<Message> messages = new ArrayList<>(Arrays.asList("Item 1", "Item 2", "Item 3",
-                    "Item 4", "Item 5", "Item 6") );
+            ArrayList<Message> messages = new ArrayList<>();
 
             BaseAdapter myAdapter;
 
@@ -43,25 +40,29 @@ import java.util.Arrays;
 
                 Button sendButton = findViewById(R.id.sendButton);
                 sendButton.setOnClickListener( clik -> {
-                    objects.add("Item " + (1 + objects.size()));
+                    EditText input = findViewById(R.id.messageEnter);
+                    String content = input.getText().toString();
+                    messages.add(new Message(content,Message.SEND));
                     myAdapter.notifyDataSetChanged(); //update yourself
+                    input.setText("");
                 } );
                 Button receiveButton = findViewById(R.id.recieveButton);
-                sendButton.setOnClickListener( clik -> {
-                    objects.add("Item " + (1 + objects.size()));
+                receiveButton.setOnClickListener( clik -> {
+                    EditText input = findViewById(R.id.messageEnter);
+                    String content = input.getText().toString();
+                    messages.add(new Message(content,Message.RECEIVE));
                     myAdapter.notifyDataSetChanged(); //update yourself
+                    input.setText("");
                 } );
 
             }
 
-
-
             //Need to add 4 functions here:
             private class MyListAdapter extends BaseAdapter {
 
-                public int getCount() {  return objects.size();  } //This function tells how many objects to show
+                public int getCount() {  return messages.size();  } //This function tells how many objects to show
 
-                public String getItem(int position) { return objects.get(position);  }  //This returns the string at position p
+                public Message getItem(int position) { return messages.get(position);  }  //This returns the string at position p
 
                 public long getItemId(int p) { return p; } //This returns the database id of the item at position p
 
@@ -69,19 +70,19 @@ import java.util.Arrays;
                 {
 
                     LayoutInflater inflater = getLayoutInflater();
-                    View thisRow = recycled;
+                    View thisRow = null;
 
-                    if(thisRow == null) {
-                        thisRow = inflater.inflate(R.layout.table_row_layout, null);
+                    if(getItem(p).getType() == Message.SEND) {
+                        thisRow = inflater.inflate(R.layout.activity_chatroom_send, null);
+                    }else{
+                        thisRow = inflater.inflate(R.layout.acitivity_chatroom_receive, null);
+
                     }
 
-                    TextView itemField = thisRow.findViewById(R.id.itemField);
-                    itemField.setText(getItem(p));
-
-                    TextView numberField = thisRow.findViewById(R.id.numberField);
-                    numberField.setText(Integer.toString(p));
+                    TextView itemField = thisRow.findViewById(R.id.messageTextView);
+                    itemField.setText(getItem(p).getMessage());
 
                     return thisRow;
                 }
             }
-        }*/
+        }

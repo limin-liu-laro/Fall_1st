@@ -1,14 +1,13 @@
 package com.example.fall_1st;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,12 +32,12 @@ public class ProfileActivity extends AppCompatActivity {
             dispatchTakePictureIntent(); // onClick take action to dispatchTakePictureIntent()
         });
 
-/*        Button chattingButton=findViewById(R.id.chattingButton);
+        Button chattingButton=findViewById(R.id.chattingButton);
         chattingButton.setOnClickListener(clk ->{
             Intent goToPage3 = new Intent(ProfileActivity.this, ChatRoomActivity.class);
             startActivity(goToPage3);
 
-        });*/
+        });
 
     }
     private void dispatchTakePictureIntent() {
