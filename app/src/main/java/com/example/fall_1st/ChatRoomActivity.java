@@ -72,6 +72,7 @@ import java.util.ArrayList;
                     LayoutInflater inflater = getLayoutInflater();
                     View thisRow = null;
 
+                    
                     if(getItem(p).getType() == Message.SEND) {
                         thisRow = inflater.inflate(R.layout.activity_chatroom_send, null);
                     }else{
