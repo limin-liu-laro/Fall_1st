@@ -5,29 +5,43 @@ import androidx.annotation.Nullable;
 
 public class Message {
     private String message;
-    private int type;
-    public final static int SEND =1;
-    public final static int RECEIVE=2;
+    private boolean isSent;
+    private long id;
 
-    public Message(String message,int type) {
+    public Message(String message,boolean isSent, long id) {
         this.message = message;
-        this.type=type;
+        this.isSent=isSent;
+        this.id=id;
+    }
+
+    /**Chaining constructor: */
+    public Message(String message, boolean isSent) {
+        this(message, isSent, 0);
     }
 
     public String getMessage() {
         return message;
     }
 
-    public int getType() {
-        return type;
+    public long getId(){
+        return id;
+    }
+
+    public void setSent(boolean sent) {
+        isSent = sent;
+    }
+
+    public boolean isSent() {
+        return isSent;
     }
 
     public void setMessage(String message) {
         this.message = message;
     }
 
-    public void setType(int type) {
-        this.type = type;
+
+    public void setId(long id){
+        this.id=id;
     }
 
     @NonNull
