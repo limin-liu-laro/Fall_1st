@@ -63,7 +63,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                     boolean isSent = Boolean.valueOf(results.getString(isSentlColumnIndex));
                     long id = results.getLong(idColIndex);
 
-                    //add the new Contact to the array list:
+                    //add the new Message to the array list:
                     messages.add(new Message(message, isSent, id));
                 }
 
@@ -83,9 +83,9 @@ public class ChatRoomActivity extends AppCompatActivity {
                     long newId = db.insert(DatabaseOpenHelper.TABLE_NAME, null, newRowValues);
 
                     //now you have the newId, you can create the Contact object
-                    Message newContact = new Message(content, true, newId);
+                    Message newMessage = new Message(content, true, newId);
 
-                    messages.add(newContact);
+                    messages.add(newMessage);
 
 
                     myAdapter.notifyDataSetChanged(); //update yourself
@@ -105,9 +105,9 @@ public class ChatRoomActivity extends AppCompatActivity {
                     long newId = db.insert(DatabaseOpenHelper.TABLE_NAME, null, newRowValues);
 
                     //now you have the newId, you can create the Contact object
-                    Message newContact = new Message(content, false, newId);
+                    Message newMessage = new Message(content, false, newId);
 
-                    messages.add(newContact);
+                    messages.add(newMessage);
                     myAdapter.notifyDataSetChanged(); //update yourself
                     input.setText(""); // content clear
                 } );
