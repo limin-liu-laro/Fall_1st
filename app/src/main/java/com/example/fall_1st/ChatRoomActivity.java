@@ -48,6 +48,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                 //distinct:false , no distinct.
                 //equal to: select * from table_name;
                 String [] columns = {DatabaseOpenHelper.COL_ID, DatabaseOpenHelper.COL_MESSAGE, DatabaseOpenHelper.COL_IS_SENT};
+
                 Cursor results = db.query(false, DatabaseOpenHelper.TABLE_NAME, columns, null, null, null, null, null, null);
                 //=========================================================
                 printCursor(results);
@@ -55,6 +56,9 @@ public class ChatRoomActivity extends AppCompatActivity {
                 int isSentlColumnIndex = results.getColumnIndex(DatabaseOpenHelper.COL_IS_SENT);
                 int messageColIndex = results.getColumnIndex(DatabaseOpenHelper.COL_MESSAGE);
                 int idColIndex = results.getColumnIndex(DatabaseOpenHelper.COL_ID);
+
+                //move cursor to the first line
+                results = db.query(false, DatabaseOpenHelper.TABLE_NAME, columns, null, null, null, null, null, null);
 
                 //iterate over the results, return true if there is a next item:
                 while(results.moveToNext())
@@ -114,7 +118,15 @@ public class ChatRoomActivity extends AppCompatActivity {
 
             }
 
-            //Need to add 4 functions here:
+/*
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        db.close();
+    }
+*/
+
+    //Need to add 4 functions here:
             private class MyListAdapter extends BaseAdapter {
 
                 public int getCount() {  return messages.size();  } //This function tells how many objects to show
