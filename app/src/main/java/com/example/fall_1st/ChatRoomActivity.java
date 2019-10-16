@@ -163,13 +163,17 @@ public class ChatRoomActivity extends AppCompatActivity {
                 Log.i(ACTIVITY_NAME," Number of results is " + c.getCount());
 
                 //iterate over the results, return true if there is a next item:
-                while(c.moveToNext())
+                c.moveToFirst();
+                while(!c.isAfterLast())
+
                 {
                     int isSentlColumnIndex = c.getColumnIndex(DatabaseOpenHelper.COL_IS_SENT);
                     int messageColIndex = c.getColumnIndex(DatabaseOpenHelper.COL_MESSAGE);
                     int idColIndex = c.getColumnIndex(DatabaseOpenHelper.COL_ID);
                     Log.i(ACTIVITY_NAME," Row No." + c.getString(idColIndex)+" "+c.getString(messageColIndex)+" "+c.getString(isSentlColumnIndex));
+                    c.moveToNext();
                 }
+
 
             }
         }
