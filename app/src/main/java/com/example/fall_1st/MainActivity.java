@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         prefs = getSharedPreferences("FileName", MODE_PRIVATE); // prefs : getSharedPreferences from FileName
         String previous = prefs.getString("ReserveName", "Default Value"); // get Key: getString from ReserveName
 
-        EditText emailText = findViewById(R.id.email); // bound email id
+        EditText emailText = findViewById(R.id.email); //
        Log.d(ACTIVITY_NAME,emailText.toString());
         Log.d(ACTIVITY_NAME,emailText.getText().toString());
         this.email = emailText.getText().toString();

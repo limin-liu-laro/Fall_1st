@@ -39,6 +39,20 @@ public class ProfileActivity extends AppCompatActivity {
 
         });
 
+        Button weatherButton=findViewById(R.id.weatherForecastButton);
+        weatherButton.setOnClickListener(clk ->{
+            Intent goToPage4 = new Intent(ProfileActivity.this, WeatherForecastActivity.class);
+            startActivity(goToPage4);
+
+        });
+
+        Button gotoToolbarButton=findViewById(R.id.gotoToolbarButton);
+        gotoToolbarButton.setOnClickListener(clk ->{
+            Intent goToPage5 = new Intent(ProfileActivity.this, TestToolbar.class);
+            startActivity(goToPage5);
+
+        });
+
     }
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
