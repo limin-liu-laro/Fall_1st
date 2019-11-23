@@ -32,18 +32,4 @@
         android:textAlignment="center" />
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Negative"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/negative"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Positive"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/positive"/>
 </RelativeLayout>
