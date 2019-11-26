@@ -2,6 +2,7 @@ package com.example.fall_1st;
 
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,16 +24,21 @@ import java.util.Arrays;
 
 public class ChatRoomActivity extends AppCompatActivity {
             //items to display
+            public static final String ITEM_SELECTED = "ITEM";
+            public static final String ITEM_POSITION = "POSITION";
+            public static final String ITEM_ID = "ID";
+            public static final int EMPTY_ACTIVITY = 345;
             ArrayList<Message> messages = new ArrayList<>();
             private static final String ACTIVITY_NAME = "ChatRoomActivity";
+            //ListView theList;
 
             BaseAdapter myAdapter;
 
             @Override
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
-                setContentView(R.layout.activity_chat_room);
-
+                setContentView(R.layout.framelayout);
+                boolean isTablet = findViewById(R.id.gotoToolbarButton) != null;
                 //You only need 2 lines in onCreate to actually display data:
                 ListView theList = findViewById(R.id.theList);
                 theList.setAdapter( myAdapter = new MyListAdapter() );
@@ -51,13 +57,13 @@ public class ChatRoomActivity extends AppCompatActivity {
 
                 Cursor results = db.query(false, DatabaseOpenHelper.TABLE_NAME, columns, null, null, null, null, null, null);
                 //=========================================================
-                printCursor(results);
+                this.printCursor(results);
                 //find the column indices:
                 int isSentlColumnIndex = results.getColumnIndex(DatabaseOpenHelper.COL_IS_SENT);
                 int messageColIndex = results.getColumnIndex(DatabaseOpenHelper.COL_MESSAGE);
                 int idColIndex = results.getColumnIndex(DatabaseOpenHelper.COL_ID);
 
-                //move cursor to the first line
+
                 results = db.query(false, DatabaseOpenHelper.TABLE_NAME, columns, null, null, null, null, null, null);
 
                 //iterate over the results, return true if there is a next item:
@@ -95,7 +101,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                     myAdapter.notifyDataSetChanged(); //update yourself
                     input.setText("");// content clear
                 } );
-                Button receiveButton = findViewById(R.id.recieveButton);
+               /* Button receiveButton = findViewById(R.id.recieveButton);
                 receiveButton.setOnClickListener( clik -> {
                     EditText input = findViewById(R.id.messageEnter);
                     String content = input.getText().toString();
@@ -114,17 +120,52 @@ public class ChatRoomActivity extends AppCompatActivity {
                     messages.add(newMessage);
                     myAdapter.notifyDataSetChanged(); //update yourself
                     input.setText(""); // content clear
-                } );
+                } );*/
+                theList.setAdapter(myAdapter = new MyListAdapter());
+
+                theList.setOnItemClickListener((list, item, position, id) -> {
+
+                    Bundle dataToPass = new Bundle();
+                    dataToPass.putString(ITEM_SELECTED, messages.get(position).toString());
+                    dataToPass.putInt(ITEM_POSITION, position);
+                    dataToPass.putLong(ITEM_ID, id);
+
+                    if (isTablet) {
+                        DetailFragment dFragment = new DetailFragment(); //add a DetailFragment
+                        dFragment.setArguments(dataToPass); //pass it a bundle for information
+                        dFragment.setTablet(true);  //tell the fragment if it's running on a tablet or not
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .add(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
+                                .addToBackStack("AnyName") //make the back button undo the transaction
+                                .commit(); //actually load the fragment.
+                    } else //isPhone
+                    {
+                        Intent nextActivity = new Intent(ChatRoomActivity.this, EmptyActivity.class);
+                        nextActivity.putExtras(dataToPass); //send data to next activity
+                        startActivityForResult(nextActivity, EMPTY_ACTIVITY); //make the transition
+                    }
+                });
 
             }
 
-/*
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        db.close();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == EMPTY_ACTIVITY) {
+            if (resultCode == RESULT_OK) //if you hit the delete button instead of back button
+            {
+                long id = data.getLongExtra(ITEM_ID, 0);
+                deleteMessageId((int) id);
+            }
+        }
     }
-*/
+
+    public void deleteMessageId(int id) {
+        Log.i("Delete this message", " id=" + id);
+        messages.remove(id);
+        myAdapter.notifyDataSetChanged();
+    }
 
     //Need to add 4 functions here:
             private class MyListAdapter extends BaseAdapter {

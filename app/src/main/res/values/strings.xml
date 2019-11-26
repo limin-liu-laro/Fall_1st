@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab7</string>
+    <string name="app_name">Lab8</string>
     <string name="welcome_message">Enter your email address</string>
     <string name="Button1">Type email here </string>
     <string name="Button2">Type your password:</string>
@@ -24,6 +24,7 @@
     <string name="MaxTemperature">Max Temperature</string>
     <string name="UV">UV Rating</string>
     <string name="ToolbarButton">Tool Bar</string>
+    <string name="FragmentButton">Fragment</string>
     <!--    <string name="Button4">Switch on/off</string>
     <string name="Button5">Type HERE</string>
     <string name="Hint">Author Name</string>-->

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab7</string>
+    <string name="app_name">Lab8</string>
     <string name="welcome_message">输入你的邮箱地址：</string>
     <string name="Button1">在此输入邮箱地址</string>
     <string name="Button2">输入你的密码:</string>
@@ -24,6 +24,7 @@
     <string name="MaxTemperature">最高气温</string>
     <string name="UV">UV 指数</string>
     <string name="ToolbarButton">工具</string>
+    <string name="FragmentButton">分页</string>
 
 
     <!--    <string name="Button4">Switch on/off</string>
